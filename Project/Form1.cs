@@ -19,8 +19,7 @@ namespace Project
             InitializeComponent();
         }
 
-        public const int MAX_NUM_OF_PRJ = 200;
-        private Profile[] projectWorker = new Profile[MAX_NUM_OF_PRJ];
+        private List<Profile> projectWorker = new List<Profile>();
 
         //프로잭트만들기
         private void addProject(object sender, EventArgs e)
@@ -62,20 +61,13 @@ namespace Project
             string memo = rtxMemo.Text;
             int num = this.treeView1.SelectedNode.Nodes.Count;
             this.treeView1.SelectedNode.Nodes.Add(worker);
-            int pjWorker = projectWorker.Length;
+            int pjWorker = projectWorker.Count;
 
             ArrayList myWorker = new ArrayList(); // ArrayList 생성
 
             //doDrawing(ts);
             //직원데이터베이스만들기
-            if (projectWorker[num] == null)
-            {
-                projectWorker[num] = new Profile(worker, memo, myWorker);
-            }
-            else
-            {
-                projectWorker[num].set(worker, memo, myWorker);
-            }
+            projectWorker.Add(new Profile(worker, memo, myWorker));
         }
 
         //도형그리기
