@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 using System.IO;
+using System.Diagnostics;
 
 
 namespace Project
@@ -48,7 +49,7 @@ namespace Project
         //}
 
         // 프로잭트보기
-        private void button3_Click(object sender, EventArgs e)
+        private void showProjects(object sender, EventArgs e)
         {
             //  FileStream fileStreamOutput = new FileStream(strFileName.txt, FileMode.Create);
 
@@ -59,7 +60,15 @@ namespace Project
         {
             string worker = txtWorker.Text;
             string memo = rtxMemo.Text;
-            int num = this.treeView1.SelectedNode.Nodes.Count;
+            try
+            {
+                int num = this.treeView1.SelectedNode.Nodes.Count;
+            }
+            catch (NullReferenceException ex)
+            {
+                Trace.WriteLine(ex.ToString());
+                return;
+            }
             this.treeView1.SelectedNode.Nodes.Add(worker);
             int pjWorker = projectWorker.Count;
 
