@@ -120,7 +120,7 @@
             this.button3.TabIndex = 11;
             this.button3.Text = "프로잭트 보기";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.showProjects);
+            this.button3.Click += new System.EventHandler(this.outputToFile);
             // 
             // groupBox1
             // 
@@ -158,7 +158,7 @@
             this.co_worker.TabIndex = 13;
             this.co_worker.Text = "팀원";
             this.co_worker.UseVisualStyleBackColor = true;
-            this.co_worker.Click += new System.EventHandler(this.addWorking);
+            this.co_worker.Click += new System.EventHandler(this.addWorkerToPrj);
             // 
             // txtWorker
             // 
