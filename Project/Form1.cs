@@ -20,17 +20,16 @@ namespace Project
             InitializeComponent();
         }
 
-        private List<Project> projectList = new List<Project>();
+        List<string> projectList = new List<string>();
         private WorkerTable workerTable = new WorkerTable();
 
         //프로잭트만들기
         private void addProject(object sender, EventArgs e)
         {
             string pj = btPj.Text;
-            int x = 10, y = 10;
-            doDrawing(pj, x, y);
 
             treeView1.Nodes.Add(pj);
+
 
         }
 
@@ -41,7 +40,6 @@ namespace Project
             string day = date.Text;
             string memo = rtxMemo.Text;
             this.treeView1.SelectedNode.Nodes.Add(ts);
-
             string workerName = this.treeView1.SelectedNode.Text;
             TaskInfo info = new TaskInfo(ts, day, memo);
             workerTable.addTaskToWorker(this.treeView1.SelectedNode.Text, info);
@@ -91,25 +89,12 @@ namespace Project
             this.treeView1.SelectedNode.Nodes.Add(worker);
             int pjWorker = projectList.Count;
 
-            ArrayList myWorker = new ArrayList(); // ArrayList 생성
+            projectList.Add(worker);
 
-            //doDrawing(ts);
-            //직원데이터베이스만들기
-            projectList.Add(new Project(worker, memo, myWorker));
+
         }
 
-        //도형그리기
-        private void doDrawing(string name, int xx, int yy)
-        {
-            string pjName = name;
-            int x = xx;
-            int y = yy;
-            Graphics graphics = Graphics.FromHwnd(this.Handle);
-            Pen pen = Pens.Firebrick;
-            Rectangle rectangle = new Rectangle(x, y, 60, 30);
-            graphics.DrawRectangle(Pens.Black, rectangle);
-            graphics.DrawString(pjName, new Font("돋움체", 18), Brushes.Red, rectangle);
-        }
+
 
     }
 
