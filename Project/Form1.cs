@@ -53,7 +53,7 @@ namespace Project
         {
             //  FileStream fileStreamOutput = new FileStream(strFileName.txt, FileMode.Create);
             Profile prj = null;
-            string name = treeView1.SelectedNode.Name.ToString();
+            string name = treeView1.SelectedNode.Text;
             foreach (Profile project in projectWorker)
             {
                 if (name == project.worker) {
