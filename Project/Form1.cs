@@ -21,6 +21,7 @@ namespace Project
         }
 
         private List<Project> projectList = new List<Project>();
+        private WorkerTable workerTable = new WorkerTable();
 
         //프로잭트만들기
         private void addProject(object sender, EventArgs e)
@@ -39,10 +40,11 @@ namespace Project
             string ts = txtTs.Text;
             string day = date.Text;
             string memo = rtxMemo.Text;
-            int num = this.treeView1.SelectedNode.Index;
             this.treeView1.SelectedNode.Nodes.Add(ts);
-            projectList[num].workerList.Add(new TaskInfo(ts, day, memo));
-            //doDrawing(ts);
+
+            string workerName = this.treeView1.SelectedNode.Text;
+            TaskInfo info = new TaskInfo(ts, day, memo);
+            workerTable.addTaskToWorker(this.treeView1.SelectedNode.Text, info);
         }
 
         // 프로잭트보기
@@ -107,22 +109,6 @@ namespace Project
             Rectangle rectangle = new Rectangle(x, y, 60, 30);
             graphics.DrawRectangle(Pens.Black, rectangle);
             graphics.DrawString(pjName, new Font("돋움체", 18), Brushes.Red, rectangle);
-        }
-
-    }
-
-    //테스크인포클래스
-    class TaskInfo
-    {
-        string name = "";
-        string memo = "";
-        string day = "";
-
-        public TaskInfo(string name, string day, string memo)
-        {
-            this.name = name;
-            this.day = day;
-            this.memo = memo;
         }
 
     }
