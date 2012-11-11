@@ -42,7 +42,7 @@ namespace Project
             string memo = rtxMemo.Text;
             int num = this.treeView1.SelectedNode.Index;
             this.treeView1.SelectedNode.Nodes.Add(ts);
-            projectWorker[num].workerList.Add(new makeTask(ts, day, memo));
+            projectWorker[num].workerList.Add(new Task(ts, day, memo));
             //doDrawing(ts);
 
         }
@@ -52,7 +52,27 @@ namespace Project
         private void showProjects(object sender, EventArgs e)
         {
             //  FileStream fileStreamOutput = new FileStream(strFileName.txt, FileMode.Create);
+            Profile prj = null;
+            string name = treeView1.SelectedNode.Name.ToString();
+            foreach (Profile project in projectWorker)
+            {
+                if (name == project.worker) {
+                    prj = project;
+                }
+                break;
+            }
 
+            // make filename
+            var path = @"c:\" + treeView1.SelectedNode.Name.ToString() + "txt";
+            StreamWriter sw = new StreamWriter(new FileStream(path, FileMode.Create), System.Text.Encoding.Default);
+            sw.BaseStream.Seek(0, SeekOrigin.End);
+
+            // write to file
+            foreach(string workerName in prj.workerList){
+                sw.WriteLine(workerName);
+            }
+            sw.Flush();
+            sw.Close();
         }
 
         // 팀원추가하기
@@ -95,13 +115,13 @@ namespace Project
     }
 
     //테스크인포클래스
-    class makeTask
+    class Task
     {
         string name = "";
         string memo = "";
         string day = "";
 
-        public makeTask(string name, string day, string memo)
+        public Task(string name, string day, string memo)
         {
             this.name = name;
             this.day = day;
@@ -113,10 +133,16 @@ namespace Project
     //테스크 데이터베이스
     class Profile
     {
-        private string worker;
+
         private string memo;
         private ArrayList mWorkersList;
-        
+
+        private string mWorker;
+        public string worker
+        {
+            get { return this.mWorker; }
+        }
+
         public ArrayList workerList {
             get { return this.mWorkersList; }
             set { this.mWorkersList = value; }
@@ -134,14 +160,14 @@ namespace Project
 
         public Profile(string worker, string memo, ArrayList myWorker)
         {
-            this.worker = worker;
+            this.mWorker = worker;
             this.memo = memo;
             this.mWorkersList = myWorker;
         }
 
         internal void set(string worker, string memo, ArrayList myWorker)
         {
-            this.worker = worker;
+            this.mWorker = worker;
             this.memo = memo;
             this.mWorkersList = myWorker;
         }
