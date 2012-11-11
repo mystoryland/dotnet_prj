@@ -20,7 +20,7 @@ namespace Project
             InitializeComponent();
         }
 
-        private List<Profile> projectWorker = new List<Profile>();
+        private List<Project> projectList = new List<Project>();
 
         //프로잭트만들기
         private void addProject(object sender, EventArgs e)
@@ -33,8 +33,7 @@ namespace Project
 
         }
 
-        //테스크추가하기
-        // try{
+        //테스크 추가하기
         private void addTask(object sender, EventArgs e)
         {
             string ts = txtTs.Text;
@@ -42,19 +41,17 @@ namespace Project
             string memo = rtxMemo.Text;
             int num = this.treeView1.SelectedNode.Index;
             this.treeView1.SelectedNode.Nodes.Add(ts);
-            projectWorker[num].workerList.Add(new Task(ts, day, memo));
+            projectList[num].workerList.Add(new TaskInfo(ts, day, memo));
             //doDrawing(ts);
-
         }
-        //}
 
         // 프로잭트보기
         private void showProjects(object sender, EventArgs e)
         {
             //  FileStream fileStreamOutput = new FileStream(strFileName.txt, FileMode.Create);
-            Profile prj = null;
+            Project prj = null;
             string name = treeView1.SelectedNode.Text;
-            foreach (Profile project in projectWorker)
+            foreach (Project project in projectList)
             {
                 if (name == project.worker) {
                     prj = project;
@@ -90,13 +87,13 @@ namespace Project
                 return;
             }
             this.treeView1.SelectedNode.Nodes.Add(worker);
-            int pjWorker = projectWorker.Count;
+            int pjWorker = projectList.Count;
 
             ArrayList myWorker = new ArrayList(); // ArrayList 생성
 
             //doDrawing(ts);
             //직원데이터베이스만들기
-            projectWorker.Add(new Profile(worker, memo, myWorker));
+            projectList.Add(new Project(worker, memo, myWorker));
         }
 
         //도형그리기
@@ -115,13 +112,13 @@ namespace Project
     }
 
     //테스크인포클래스
-    class Task
+    class TaskInfo
     {
         string name = "";
         string memo = "";
         string day = "";
 
-        public Task(string name, string day, string memo)
+        public TaskInfo(string name, string day, string memo)
         {
             this.name = name;
             this.day = day;
@@ -131,19 +128,18 @@ namespace Project
     }
 
     //테스크 데이터베이스
-    class Profile
+    class Project
     {
-
         private string memo;
-        private ArrayList mWorkersList;
-
         private string mWorker;
         public string worker
         {
             get { return this.mWorker; }
         }
 
-        public ArrayList workerList {
+        private ArrayList mWorkersList;
+        public ArrayList workerList
+        {
             get { return this.mWorkersList; }
             set { this.mWorkersList = value; }
         }
@@ -153,12 +149,12 @@ namespace Project
             this.mWorkersList = new ArrayList();
         }
 
-        public Profile()
+        public Project()
         {
             _init();
         }
 
-        public Profile(string worker, string memo, ArrayList myWorker)
+        public Project(string worker, string memo, ArrayList myWorker)
         {
             this.mWorker = worker;
             this.memo = memo;
