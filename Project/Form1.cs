@@ -34,7 +34,7 @@ namespace Project
         }
 
         //테스크추가하기
- 
+        // try{
         private void addTask(object sender, EventArgs e)
         {
             string ts = txtTs.Text;
@@ -46,33 +46,13 @@ namespace Project
             //doDrawing(ts);
 
         }
-
+        //}
 
         // 프로잭트보기
         private void showProjects(object sender, EventArgs e)
         {
-            StreamWriter txProject = new StreamWriter(new FileStream("project.txt", FileMode.Create ));
-            int num;
-            //인덱스가 null일경우 잡기.
-             try
-            {
-                num = this.treeView1.SelectedNode.Nodes.Count;
-            }
-            catch (NullReferenceException ex)
-             {
-                 Trace.WriteLine(ex.ToString());
-                 return;
-             }
-            
-            makeTask[] task = new makeTask[projectWorker[num].workerList.Count];
-            for (int i = 0; i < projectWorker[num].workerList.Count; i++)
-            {
-                task[i] = (makeTask)projectWorker[num].workerList[i];
-            }
-              /*foreach(makeTask i in task){
-                txProject.WriteLine("테스크 : {0}, 마감기한 : {1}, 비고 : {2}", */
+            //  FileStream fileStreamOutput = new FileStream(strFileName.txt, FileMode.Create);
 
-            
         }
 
         // 팀원추가하기
@@ -80,7 +60,15 @@ namespace Project
         {
             string worker = txtWorker.Text;
             string memo = rtxMemo.Text;
-
+            try
+            {
+                int num = this.treeView1.SelectedNode.Nodes.Count;
+            }
+            catch (NullReferenceException ex)
+            {
+                Trace.WriteLine(ex.ToString());
+                return;
+            }
             this.treeView1.SelectedNode.Nodes.Add(worker);
             int pjWorker = projectWorker.Count;
 

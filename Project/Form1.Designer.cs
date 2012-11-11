@@ -167,15 +167,15 @@
             this.txtWorker.Size = new System.Drawing.Size(134, 21);
             this.txtWorker.TabIndex = 12;
             // 
-            // FormProject
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1250, 639);
             this.Controls.Add(this.groupBox1);
-            this.Name = "FormProject";
-            this.Text = "Project Management";
+            this.Name = "Form1";
+            this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
