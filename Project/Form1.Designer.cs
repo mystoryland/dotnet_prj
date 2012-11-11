@@ -136,7 +136,7 @@
             this.groupBox1.Controls.Add(this.taskMaking);
             this.groupBox1.Controls.Add(this.rtxMemo);
             this.groupBox1.Controls.Add(this.txtTs);
-            this.groupBox1.Location = new System.Drawing.Point(706, 12);
+            this.groupBox1.Location = new System.Drawing.Point(23, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(237, 622);
             this.groupBox1.TabIndex = 12;
@@ -172,7 +172,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1028, 585);
+            this.ClientSize = new System.Drawing.Size(290, 585);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormProject";
             this.Text = "Form1";
