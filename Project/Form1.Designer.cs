@@ -52,7 +52,7 @@
             this.projectMaking.TabIndex = 1;
             this.projectMaking.Text = "프로잭트";
             this.projectMaking.UseVisualStyleBackColor = true;
-            this.projectMaking.Click += new System.EventHandler(this.addProject);
+            this.projectMaking.Click += new System.EventHandler(this.projectMaking_Click);
             // 
             // btPj
             // 
@@ -63,9 +63,9 @@
             // 
             // treeView1
             // 
-            this.treeView1.Location = new System.Drawing.Point(26, 267);
+            this.treeView1.Location = new System.Drawing.Point(26, 208);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(188, 295);
+            this.treeView1.Size = new System.Drawing.Size(188, 315);
             this.treeView1.TabIndex = 4;
             // 
             // taskMaking
@@ -89,7 +89,7 @@
             // 
             this.rtxMemo.Location = new System.Drawing.Point(26, 152);
             this.rtxMemo.Name = "rtxMemo";
-            this.rtxMemo.Size = new System.Drawing.Size(188, 100);
+            this.rtxMemo.Size = new System.Drawing.Size(188, 50);
             this.rtxMemo.TabIndex = 8;
             this.rtxMemo.Text = "";
             // 
@@ -114,21 +114,21 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(26, 568);
+            this.button3.Location = new System.Drawing.Point(26, 529);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(188, 42);
+            this.button3.Size = new System.Drawing.Size(188, 26);
             this.button3.TabIndex = 11;
-            this.button3.Text = "프로잭트 보기";
+            this.button3.Text = "프로잭트 내보내기";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.outputToFile);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.date);
+            this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.co_worker);
             this.groupBox1.Controls.Add(this.txtWorker);
             this.groupBox1.Controls.Add(this.treeView1);
-            this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.projectMaking);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.btPj);
@@ -136,9 +136,9 @@
             this.groupBox1.Controls.Add(this.taskMaking);
             this.groupBox1.Controls.Add(this.rtxMemo);
             this.groupBox1.Controls.Add(this.txtTs);
-            this.groupBox1.Location = new System.Drawing.Point(23, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(237, 622);
+            this.groupBox1.Size = new System.Drawing.Size(237, 561);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "프로잭트 만들기";
@@ -172,7 +172,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(290, 585);
+            this.ClientSize = new System.Drawing.Size(271, 585);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormProject";
             this.Text = "Form1";

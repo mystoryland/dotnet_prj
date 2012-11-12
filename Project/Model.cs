@@ -14,26 +14,36 @@ namespace Project
         string memo = "";
         string day = "";
 
-        public TaskInfo(string name, string day, string memo)
+        public TaskInfo(string name, string day, string memo="")
         {
             this.name = name;
             this.day = day;
             this.memo = memo;
         }
+        public TaskInfo()
+        {
+            this.name = "";
+            this.memo = "";
+            this.day = "";
+            
+        }
 
         public string toString()
         {
-            return "";
+            String a = "테스크이름 : " + name + "마감기한 : " + day + " 비고 : " + memo;
+            return a;
         }
     }
 
     class WorkerTable
     {
+        string workerName;
         private Hashtable mTable = new Hashtable();
 
         public void addWorker(string name)
         {
             mTable.Add(name, new List<TaskInfo>());
+            this.workerName = name;
         }
 
         public void addTaskToWorker(string name, TaskInfo task)
@@ -48,11 +58,12 @@ namespace Project
         }
 
         public string toString() {
-            return "";
+            string a = "팀원 : " + workerName;
+            return a;
         }
     }
 
-    //테스크 데이터베이스
+    // 데이터베이스
     class Project
     {
         private string name;
@@ -90,9 +101,16 @@ namespace Project
             this.workerList.Add(workerName);
         }
 
+        public int getNumOfWoreker()
+        {
+            return this.mWorkersList.Count;
+        }
+
         public string toString()
         {
-            return "";
+            String a = "프로잭트 : "+name;
+            return a;
         }
     }
+   
 }
